@@ -1,0 +1,29 @@
+@import url('./tt-chocolates.css');
+
+body {
+    font-family: 'TT Chocolates', sans-serif;
+}
+header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+header form[role=search] {
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+}
+
+header form[role=search] button {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    right: 0;
+}
+
+form.login-form {
+    border: 1px solid #F1F1F1;
+    padding: 2rem;
+    margin-top: 4rem;
+    border-radius: 7px;
+}
