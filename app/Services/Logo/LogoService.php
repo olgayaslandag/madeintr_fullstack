@@ -17,7 +17,9 @@ class LogoService
 
     public function uploadLogo(UploadedFile $file): LogoModel
     {
-        $path = $file->store('app/logos');
+        #$path = $file->store('app/logos', 'public');
+        $path = 'logos/' . $file->hashName();
+        $file->move(public_path('logos'), $file->hashName());
 
         return $this->model->create(['path' => $path]);
     }

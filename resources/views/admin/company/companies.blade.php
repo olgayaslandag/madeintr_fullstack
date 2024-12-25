@@ -43,7 +43,7 @@
 
                 <td>
                     @if(optional($company->logo)->path)
-                        <a href="{{ Storage::url($company->logo->path) }}" class="badge text-bg-primary text-decoration-none">Link</a>
+                        <a href="{{ optional($company->logo)->path }}" class="badge text-bg-primary text-decoration-none">Link</a>
                     @else
                         <span class="badge text-bg-secondary">Yok</span>
                     @endif

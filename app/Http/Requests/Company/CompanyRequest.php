@@ -26,9 +26,9 @@ class CompanyRequest extends FormRequest
                 "id" => "required|exists:companies,id",
             ],
             'POST' => [
-                "name" => "required",
-                "webpage" => "required|url",
-                "desc" => "required",
+                "name" => "required|max:255",
+                "webpage" => "required|max:100",
+                "desc" => "required|max:255",
                 "city_id" => "required|exists:cities,id",
             ],
             default => [],

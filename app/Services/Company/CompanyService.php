@@ -28,7 +28,7 @@ class CompanyService
     {
         return $this->repository->all()->map(function ($item) {
             $logoPath = optional($item->logo)->path;
-            $item->path = $logoPath ? Storage::url($logoPath) : null;
+            $item->path = $logoPath ? public_path($logoPath) : null;
             return $item;
         });
     }

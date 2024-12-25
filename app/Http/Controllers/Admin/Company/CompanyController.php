@@ -65,7 +65,7 @@ class CompanyController extends Controller
         return view('admin.company.form', $data);
     }
 
-    public function edit(int $id): \Illuminate\Contracts\View\View
+    public function form(int $id): \Illuminate\Contracts\View\View
     {
         $data = [
             'item' => $this->repository->find($id),
@@ -75,7 +75,7 @@ class CompanyController extends Controller
         return view('admin.company.form', $data);
     }
 
-    public function form(int $id): \Illuminate\Contracts\View\View
+    public function edit(int $id): \Illuminate\Contracts\View\View
     {
         $item = $this->repository->find($id);
         $logoPath = optional($item->logo)->path;
