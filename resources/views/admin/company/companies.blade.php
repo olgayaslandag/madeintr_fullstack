@@ -72,6 +72,4 @@
         @endforeach
         </tbody>
     </table>
-
-    @include('admin.company.company-modal')
 </x-admin-layout>

@@ -15,7 +15,7 @@ class CompanyRepository implements \App\Contracts\Company\CompanyInterface
 
     public function all(array $where=[]): \Illuminate\Database\Eloquent\Collection
     {
-        return $this->model->with(['city:id,name', 'tags', 'logo:id,path'])->get();
+        return $this->model->where($where)->with(['city:id,name', 'tags', 'logo:id,path'])->get();
     }
 
     public function store(array $data, int $id = null): CompanyModel

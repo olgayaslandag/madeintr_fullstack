@@ -106,7 +106,7 @@
     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary mt-3">
+    <button type="submit" class="btn btn-primary w-100 mt-3">
         {{ isset($item) ? 'Güncelle' : 'Kaydet' }}
     </button>
 </form>
