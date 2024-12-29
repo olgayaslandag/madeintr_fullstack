@@ -3,9 +3,7 @@
       enctype="multipart/form-data"
       autocomplete="off">
     @csrf
-    @if (isset($item))
-        @method('PUT')
-    @endif
+
 
     <!-- Ünvan -->
     <div class="mb-3">

@@ -23,4 +23,7 @@ Route::controller(CompanyController::class)->group(function(){
 
 Route::controller(UserController::class)->group(function() {
     Route::get('/users', 'index')->name('user.all');
+    Route::get('/user/new', 'create')->name('user.create');
+    Route::get('/user/edit/{id}', 'edit')->name('user.edit');
+    Route::post('/user/store', 'store')->name('user.store');
 });
