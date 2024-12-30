@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\AuthController;
 use App\Http\Controllers\Admin\Company\CompanyController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Tag\TagController;
@@ -29,4 +28,8 @@ Route::controller(UserController::class)->group(function() {
 
 Route::controller(TagController::class)->group(function() {
     Route::get('/tags', 'index')->name('tag.all');
+    Route::get('/tag/new', 'create')->name('tag.create');
+    Route::get('/tag/edit/{id}', 'edit')->name('tag.edit');
+    Route::delete('/tag/delete/{id}', 'delete')->name('tag.delete');
+    Route::post('/tag/store', 'store')->name('tag.store');
 });

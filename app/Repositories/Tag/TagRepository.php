@@ -53,4 +53,29 @@ class TagRepository implements \App\Contracts\Tag\TagInterface
         return $this->relationModel->where('company_id', $companyId)->delete();
     }
 
+    public function find(array $where = [])
+    {
+        return $this->model
+            ->select("tags.id", "tags.name")
+            ->groupBy('tags.id', 'tags.name')
+            ->where($where)
+            ->first();
+    }
+
+    public function store(array $data, int $id = null): TagModel
+    {
+        if (!$id) {
+            return $this->model->create($data);
+        } else {
+            $user = $this->model->findOrFail($id);
+            $user->update($data);
+
+            return $user;
+        }
+    }
+
+    public function delete(int $id): int
+    {
+        return $this->model->destroy($id);
+    }
 }
