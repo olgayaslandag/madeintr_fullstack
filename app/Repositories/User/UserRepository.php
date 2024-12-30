@@ -43,4 +43,9 @@ class UserRepository implements UserInterface
             return $user;
         }
     }
+
+    public function delete(int $id): int
+    {
+        return $this->model->destroy($id);
+    }
 }

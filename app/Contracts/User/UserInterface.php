@@ -9,4 +9,6 @@ interface UserInterface
     public function find(array $where=[]);
 
     public function store(array $data, int $id = null);
+
+    public function delete(int $id): int;
 }

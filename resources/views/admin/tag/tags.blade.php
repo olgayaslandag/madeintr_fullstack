@@ -15,33 +15,28 @@
         <thead>
         <tr>
             <th scope="col" width="50">#</th>
-            <th scope="col">Adsoyad</th>
-            <th scope="col">Eposta</th>
-            <th scope="col">Firma</th>
-            <th scope="col">Yetki</th>
+            <th scope="col">Ad</th>
+            <th scope="col" width="50"></th>
             <th scope="col" width="50"></th>
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($tags as $tag)
             <tr>
-                <td scope="row">{{ $user->id }}</td>
-                <td scope="row">{{ $user->name }}</td>
-                <td scope="row">{{ $user->email }}</td>
-                <td scope="row">{{ $user->company_id ?? null }}</td>
-                <td scope="row">{{ $user->rank_label }}</td>
-
+                <td scope="row">{{ $tag->id }}</td>
+                <td scope="row">{{ $tag->name }}</td>
+                <td scope="row">{{ $tag->usage_count }}</td>
                 <td>
                     <div class="btn-group" role="group">
                         <div class="me-1">
-                        <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-secondary">
+                        <a href="{{ route('user.edit', ['id' => $tag->id]) }}" class="btn btn-sm btn-secondary">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         </div>
-                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                        <form action="{{ route('company.delete', $tag->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <input type="hidden" name="id" value="{{ $user->id }}">
+                            <input type="hidden" name="id" value="{{ $tag->id }}">
                             <button type="submit" class="btn btn-sm btn-danger sil">
                                 <i class="fa-solid fa-trash"></i>
                             </button>

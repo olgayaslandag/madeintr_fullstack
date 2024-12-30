@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-12 col-sm-6 offset-sm-3">
-        <form method="post" action="{{route('user.store')}}">
+        <form method="post" action="{{route('user.store')}}" autocomplete="off">
             @csrf
             <div class="mb-3">
                 <label for="name">Ad Soyad</label>
@@ -18,6 +18,14 @@
                 <label for="email">E-posta</label>
                 <input type="email" name="email" id="email" value="{{ old('email', $user->email ?? '') }}" class="form-control">
                 @error('email')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="password">Şifre</label>
+                <input type="password" name="password" id="password" value="{{ old('password' ?? '') }}" class="form-control" autocomplete="new-password">
+                @error('password')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>

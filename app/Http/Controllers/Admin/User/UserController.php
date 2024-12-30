@@ -54,7 +54,21 @@ class UserController extends Controller
         if($data['password'])
             $data['password'] = Hash::make($data['password']);
 
+        if($data['id'] && !isset($data['password'])) {
+            $item = $this->repository->find(['id' => $data['id']]);
+            $data['password'] = $item->password;
+        }
+
         $this->repository->store($data, $data['id'] ?? null);
         return redirect()->route('user.all');
+    }
+
+    public function delete(UserRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $delete = $this->repository->delete($request->id);
+        if(!$delete)
+            return redirect()->route('user.all')->with('error', 'Bilgiler sistemden silinemedi!');
+
+        return redirect()->route('user.all')->with('success', 'Bilgiler sistemden kalıcı olarak silindi.');
     }
 }
