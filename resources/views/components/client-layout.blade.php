@@ -11,36 +11,67 @@
 <body>
 <div class="topbar">
     <div class="container">
-
+        <ul class="list-inline text-center mb-0">
+            <li class="list-inline-item">
+                <a href="">About Us</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="">News & Updates</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="">About Republic of Türkiye</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="{{ route('login') }}">Members Area (Login)</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="{{ route('companyForm') }}">İşletmenizi Kaydedin</a>
+            </li>
+        </ul>
     </div>
 </div>
-<header>
+<header class="client">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid px-0">
-                <a class="navbar-brand" href="{{url('/admin')}}">
+                <a class="navbar-brand" href="{{url('/')}}">
                     <img src="{{asset('img/logo.png')}}" height="50" />
                 </a>
-                @auth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Ana Ekran</a>
+                            <a class="nav-link" aria-current="page" href="/">
+                                Home <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('company.all')}}">Firmalar</a>
+                            <a class="nav-link" href="{{route('company.all')}}">
+                                Sectors <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('user.all')}}">Kullanıcılar</a>
+                            <a class="nav-link" href="{{route('user.all')}}">
+                                Brands <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tag.all')}}">Etiketler</a>
+                            <a class="nav-link" href="{{route('tag.all')}}">
+                                Cities <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('tag.all')}}">
+                                Franchise <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </li>
 
                         <li class="nav-item dropdown d-none">
@@ -60,7 +91,6 @@
                         <button class="btn btn-outline-success" type="submit" style="width: 5px; margin-right: 15px; opacity: 0;">Search</button>
                     </form>
                 </div>
-                @endauth
             </div>
         </nav>
     </div>
@@ -80,9 +110,11 @@
     @endif
 </div>
 
-<div class="container">
-    {{$slot}}
-</div>
+
+{{$slot}}
+
+
+@include('client.parts.prefooter')
 <div class="mb-5"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

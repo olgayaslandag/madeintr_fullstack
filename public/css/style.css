@@ -1,7 +1,17 @@
 @import url('./tt-chocolates.css');
 
+
+:root {
+    --thm-color: #c82026;
+    --thm-color-gray: #777;
+}
+
 body {
     font-family: 'TT Chocolates', sans-serif;
+}
+
+.text-theme {
+    color: var(--thm-color);
 }
 header {
     margin-bottom: 1rem;
@@ -26,4 +36,120 @@ form.login-form {
     padding: 2rem;
     margin-top: 4rem;
     border-radius: 7px;
+}
+
+.navbar-nav {
+    gap: 1.5rem;
+}
+
+.navbar-nav li.nav-item i {
+    color: var(--thm-color);
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.topbar {
+    margin-top: 0.5rem;
+}
+
+.topbar ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.topbar ul li a {
+    color: var(--thm-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.topbar ul li:last-child a {
+    background-color: var(--thm-color);
+    color: #FFF;
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+}
+
+.home-area {
+    color: var(--thm-color);
+}
+
+.home-area ul li a {
+    color: var(--thm-color);
+    border: 1px solid var(--thm-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    line-height: 3rem;
+}
+
+.home-area ul li a:hover {
+    background-color: var(--thm-color);
+    color: white;
+}
+
+.prefooter .info-area {
+    color: var(--thm-color-gray);
+}
+
+.prefooter .info-area .info-title {
+    font-weight: bold;
+}
+
+.prefooter .info-area a {
+    background-color: var(--thm-color-gray);
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
+
+.prefooter .info-area a i {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.prefooter .info-area a:hover {
+    background-color: white;
+    color: var(--thm-color-gray);
+    border: 1px solid var(--thm-color-gray);
+}
+
+
+.prefooter .tags-area ul li a {
+    color: var(--thm-color-gray);
+    border: 1px solid var(--thm-color-gray);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    line-height: 3rem;
+}
+
+.prefooter .tags-area ul li a:hover {
+    background-color: var(--thm-color-gray);
+    color: white;
+}
+
+.map svg path {
+    fill: var(--thm-color-gray);
+}
+
+.map svg path:hover {
+    fill: var(--thm-color);
+    cursor: pointer;
+}
+
+
+.register-area {
+    border-top: 2px solid var(--thm-color);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.register-area form {
+    display: flex;
+    height: 100%;
+    align-items: center;
 }
