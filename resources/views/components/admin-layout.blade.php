@@ -18,7 +18,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid px-0">
-                <a class="navbar-brand" href="{{url('/admin')}}">
+                <a class="navbar-brand" href="{{ Auth::check() ? '/admin' : '/' }}">
                     <img src="{{asset('img/logo.png')}}" height="50" />
                 </a>
                 @auth

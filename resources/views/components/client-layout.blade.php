@@ -25,7 +25,7 @@
                 <a href="{{ route('login') }}">Members Area (Login)</a>
             </li>
             <li class="list-inline-item">
-                <a href="{{ route('companyForm') }}">İşletmenizi Kaydedin</a>
+                <a href="{{ route('company.form') }}">İşletmenizi Kaydedin</a>
             </li>
         </ul>
     </div>
@@ -51,13 +51,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('company.all')}}">
+                            <a class="nav-link" href="{{route('tag.all')}}">
                                 Sectors <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('user.all')}}">
+                            <a class="nav-link" href="{{route('company.all')}}">
                                 Brands <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>
@@ -116,7 +116,7 @@
 
 @include('client.parts.prefooter')
 <div class="mb-5"></div>
-
+@include('client.parts.footer')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

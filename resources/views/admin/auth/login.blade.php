@@ -19,7 +19,7 @@
                             class="form-control"
                             name="password">
                     </div>
-                    <button class="btn btn-primary form-control">Giriş</button>
+                    <button class="btn btn-danger fw-bold form-control">Giriş</button>
                 </form>
             </div>
         </div>

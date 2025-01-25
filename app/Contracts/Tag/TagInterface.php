@@ -10,4 +10,5 @@ interface TagInterface
     public function find(array $where = []);
     public function store(array $data, int $id = null);
     public function delete(int $id): int;
+    public function companies(array $where=[]);
 }

@@ -78,4 +78,12 @@ class TagRepository implements \App\Contracts\Tag\TagInterface
     {
         return $this->model->destroy($id);
     }
+
+    public function companies(array $where=[])
+    {
+        return $this->model
+            ->where($where)
+            ->with(["companies.logo", "companies.city"])
+            ->first();
+    }
 }
