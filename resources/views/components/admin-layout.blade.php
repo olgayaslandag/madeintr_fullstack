@@ -6,6 +6,7 @@
     <title>Made In TR</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
@@ -28,19 +29,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Ana Ekran</a>
+                            <a class="nav-link" href="{{route('admin.company.all')}}">Firmalar</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('company.all')}}">Firmalar</a>
+                            <a class="nav-link" href="{{route('admin.user.all')}}">Kullanıcılar</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('user.all')}}">Kullanıcılar</a>
+                            <a class="nav-link" href="{{route('admin.tag.all')}}">Etiketler</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tag.all')}}">Etiketler</a>
+                            <a class="nav-link" href="{{route('admin.ai.form')}}">AI</a>
                         </li>
 
                         <li class="nav-item dropdown d-none">
@@ -55,7 +56,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
+                    <form class="d-flex form-search position-relative" role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit" style="width: 5px; margin-right: 15px; opacity: 0;">Search</button>
                     </form>
@@ -85,6 +86,29 @@
 </div>
 <div class="mb-5"></div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.js"></script>
+<script>
+    jQuery(function($) {
+        const table = $('.d-table').DataTable({
+            dom: 'rt<"mb-3"><"d-flex justify-content-between"ip>B',
+            searching: true,
+            pageLength: 50,
+            bInfo: true,
+            ordering: true,
+            lengthChange: false, // "Kaç kayıt gösterilsin?" seçeneğini kaldırır
+        });
+
+        $('header form.form-search').on('submit', function(e){
+            e.preventDefault();
+        });
+
+        $("header form.form-search input[type=search]").on('keyup', function(){
+            table.search($(this).val()).draw();
+        });
+    });
+</script>
 </body>
 </html>

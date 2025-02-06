@@ -1,4 +1,4 @@
-<form action="{{ isset($item) ? route('company.store', $item->id) : route('company.store') }}"
+<form action="{{ isset($item) ? route('admin.company.store', $item->id) : route('admin.company.store') }}"
       method="POST"
       enctype="multipart/form-data"
       autocomplete="off">

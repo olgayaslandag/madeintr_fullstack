@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-12 col-sm-6 offset-sm-3">
-        <form method="post" action="{{route('tag.store')}}" autocomplete="off">
+        <form method="post" action="{{route('admin.tag.store')}}" autocomplete="off">
             @csrf
             <div class="mb-3">
                 <label for="name">Tanım</label>

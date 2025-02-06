@@ -222,3 +222,8 @@ footer a i {
     font-size: 1.5rem;
     margin-right: 0.5rem;
 }
+
+
+.dt-paging {
+    zoom: 0.8;
+}

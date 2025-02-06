@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-12 col-sm-6 offset-sm-3">
-        <form method="post" action="{{route('user.store')}}">
+        <form method="post" action="{{route('admin.user.store')}}">
             @csrf
             <div class="mb-3">
                 <label for="name">Ad Soyad</label>

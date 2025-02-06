@@ -4,14 +4,14 @@
             <h1 class="h5">Etiket Yönetimi</h1>
         </div>
         <div class="float-end">
-            <a href="{{route('tag.create')}}" class="btn btn-outline-secondary">
+            <a href="{{route('admin.tag.create')}}" class="btn btn-outline-secondary">
                 <span class="me-2">Yeni</span>
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
     </div>
 
-    <table class="table table-hover">
+    <table class="table table-hover d-table">
         <thead>
         <tr>
             <th scope="col" width="50">#</th>
@@ -29,11 +29,11 @@
                 <td>
                     <div class="btn-group" role="group">
                         <div class="me-1">
-                        <a href="{{ route('tag.edit', ['id' => $tag->id]) }}" class="btn btn-sm btn-secondary">
+                        <a href="{{ route('admin.tag.edit', ['id' => $tag->id]) }}" class="btn btn-sm btn-secondary">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         </div>
-                        <form action="{{ route('tag.delete', $tag->id) }}" method="POST">
+                        <form action="{{ route('admin.tag.delete', $tag->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" value="{{ $tag->id }}">
