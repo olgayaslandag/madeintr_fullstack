@@ -81,9 +81,13 @@ class CompanyController extends Controller
         $logoPath = optional($item->logo)->path;
         $item->path = public_path($logoPath) ?? null;
 
+        foreach ($item->tags as $tag) {
+            $tags[] = $tag->name;
+        }
         $data = [
             "item" => $item,
             "cities" => $this->cityRepository->all(),
+            "tags" => $tags,
         ];
 
         return view("admin.company.company-edit", $data);

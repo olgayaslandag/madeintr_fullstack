@@ -4,10 +4,11 @@
     <div class="suggestions"></div>
 </div>
 <div class="selected-tags">
-    @foreach (old('tags', []) as $tag)
+    @foreach (old('tags', $tags ?? []) as $tag)
         <span class="tag">
             <input type="hidden" name="tags[]" value="{{ $tag }}">
-            {{ $tag }}<button type="button" class="remove-tag">&times;</button>
+            {{ $tag }}
+            <button type="button" class="remove-tag">&times;</button>
         </span>
     @endforeach
 </div>
