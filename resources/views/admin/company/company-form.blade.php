@@ -66,15 +66,21 @@
 
     <!-- Logo -->
     <div class="mb-3">
-        <label for="logo" class="{{ $errors->has('logo') ? 'text-danger' : '' }}">Logo</label>
+
+        <label for="logo" class="{{ $errors->has('logo') ? 'text-danger' : '' }}">Firma logosu</label>
         <input type="file"
                class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
                name="logo"
                id="logo"
                placeholder="Firma logosu">
+        <div class="logo-content">
         @if (isset($item) && $item->logo)
-            <img src="{{ asset('storage/' . $item->logo?->path) }}" alt="Mevcut Logo" style="max-height: 100px; margin-top: 10px;">
+            <a href="{{ asset($item->logo?->path) }}" target="_blank" class="company-logo-link btn btn-link text-dark text-decoration-none ps-0">
+                <img src="{{ asset($item->logo?->path) }}" class="logo-img" alt="Firma logosu">
+            </a>
+            <button type="button" class="btn btn-sm btn-danger remove-file">Sil</button>
         @endif
+        </div>
         @error('logo')
         <small class="text-danger">{{ $message }}</small>
         @enderror

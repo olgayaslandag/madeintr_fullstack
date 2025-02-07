@@ -35,7 +35,9 @@ class CompanyRepository implements \App\Contracts\Company\CompanyInterface
 
     public function find(int $id)
     {
-        return $this->model->with(['city:id,name', 'tags', 'logo:id,path'])->find($id);
+        return $this->model
+            ->with(['city:id,name', 'tags', 'logo:id,path'])
+            ->find($id);
     }
 
     public function delete(int $id): int

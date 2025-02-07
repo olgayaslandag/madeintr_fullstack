@@ -227,3 +227,23 @@ footer a i {
 .dt-paging {
     zoom: 0.8;
 }
+
+label[for=logo] {
+    border: 3px dotted #CCC;
+    display: flex;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+label[for=logo]:hover {
+    cursor: pointer;
+}
+input[name=logo] {
+    display: none;
+}
+
+.logo-content img {
+    max-width: 100%;
+    max-height: 100px;
+}

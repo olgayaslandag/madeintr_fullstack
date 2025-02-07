@@ -79,7 +79,7 @@ class CompanyController extends Controller
     {
         $item = $this->repository->find($id);
         $logoPath = optional($item->logo)->path;
-        $item->path = Storage::url($logoPath) ?? null;
+        $item->path = public_path($logoPath) ?? null;
 
         $data = [
             "item" => $item,
