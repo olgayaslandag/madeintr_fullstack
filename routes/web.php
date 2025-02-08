@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth'], function() {
     Route::get('/login', [AuthController::class, 'loginView'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 })->withoutMiddleware('auth');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

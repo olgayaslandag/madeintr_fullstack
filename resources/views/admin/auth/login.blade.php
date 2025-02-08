@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-4 offset-sm-4">
-                <form method="post" class="login-form" action="{{route('loginPost')}}">
+                <form method="post" class="login-form" action="{{route('login.post')}}">
                     @csrf
                     <div class="mb-3">
                         <label>Eposta</label>

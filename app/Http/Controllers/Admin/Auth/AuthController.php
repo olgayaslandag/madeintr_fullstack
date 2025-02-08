@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Enums\UserRankEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\AuthRequest;
 use App\Models\User\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,28 +17,28 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
-    public function login(Request $request)
+    public function login(AuthRequest $request)
     {
-        // Form verilerini doğrulama
-        $validated = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-
-        // Kullanıcıyı doğrulama
         $user = UserModel::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
-            // Başarılı giriş işlemi
             Auth::login($user);
 
-            // Giriş yaptıktan sonra yönlendirme
-            return redirect()->route('admin'); // veya başka bir sayfa
+            return redirect()->route(UserRankEnum::Admin->id() === $user->rank_id ? 'admin' : 'home');
         } else {
-            // Hatalı giriş
             return back()->withErrors([
                 'email' => 'Geçersiz giriş bilgileri.',
             ]);
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

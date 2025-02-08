@@ -1,3 +1,5 @@
 <x-admin-layout>
-    dashboard
+    <div>
+        <div id="chart_div"></div>
+      </div>
 </x-admin-layout>
