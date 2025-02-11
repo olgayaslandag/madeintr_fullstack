@@ -29,8 +29,8 @@ class AiController extends Controller
     {
         $request->validate(['prompt' => 'required|string']);
 
-        $response = $this->aiService->sendPrompt($request->input('prompt'));
+        $response = $this->aiService->sendPrompt($request->prompt);
 
-        return response()->json(['response' => $response]);
+        return response()->json($response);
     }
 }

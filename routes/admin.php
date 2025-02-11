@@ -40,5 +40,6 @@ Route::name('admin.')->group(function () {
         Route::get('/', 'index')->name('ai.all');
         Route::get('form', 'form')->name('ai.form');
         Route::post('store', 'store')->name('ai.store');
+        Route::post('ask', 'ask')->name('ai.ask');
     });
 });

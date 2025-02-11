@@ -22,12 +22,18 @@
     <!-- Website -->
     <div class="mb-3">
         <label for="webpage" class="{{ $errors->has('webpage') ? 'text-danger' : '' }}">Website</label>
-        <input type="text"
-               class="form-control {{ $errors->has('webpage') ? 'is-invalid' : '' }}"
-               name="webpage"
-               id="webpage"
-               placeholder="Firma internet sitesi"
-               value="{{ old('webpage', $item->webpage ?? '') }}">
+        <div class="d-flex">
+            <input type="text"
+                class="form-control me-2 {{ $errors->has('webpage') ? 'is-invalid' : '' }}"
+                name="webpage"
+                id="webpage"
+                placeholder="Firma internet sitesi"
+                value="{{ old('webpage', $item->webpage ?? '') }}">
+            <button type="button" class="btn btn-danger ai-start" disabled>
+                <i class="fa-solid fa-microchip"></i>
+            </button>
+        </div>
+
         @error('webpage')
         <small class="text-danger">{{ $message }}</small>
         @enderror
@@ -114,3 +120,89 @@
         {{ isset($item) ? 'Güncelle' : 'Kaydet' }}
     </button>
 </form>
+
+@push('javascript')
+<script>
+jQuery(function($) {
+    $('input[name=webpage]').on('keyup', function() {
+        if ($(this).val().length > 0) {
+            $('.ai-start').removeAttr('disabled');
+        } else {
+            $('.ai-start').attr('disabled', 'disabled');
+        }
+    });
+    $('.ai-start').click(function() {
+        const popup = Swal.fire({
+            icon: 'info',
+            title: 'Lütfen Bekleyin',
+            text: 'Sunucudan bilgiler alınma işlemi biraz zaman alabilir. Beklediğiniz için teşekkürler.',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+
+        const formData = new FormData();
+        formData.append('prompt', $('input[name=webpage]').val());
+
+        $.ajax({
+            url: "{{ route('admin.ai.ask') }}",
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if(response.error) {
+                    Swal.fire({
+                        title: response.error.type ?? "Oooopsss!",
+                        text: response.error.message ?? "API isteğinde bir hata oluştu!",
+                        icon: "error"
+                    });
+                    return;
+                }
+                const contentRaw = response.choices[0].message.content;
+                let contentClean = contentRaw.replace(/^```json\s+|\s+```$/g, "");
+                let content = JSON.parse(contentClean);
+                $("select[name='franchising']").val(content.franchise === "Yes" ? "1" : "0");
+
+                console.log(content);
+
+                $('input[name=name]').val(content.business_name);
+                $('textarea[name=desc]').val(content.about_summary);
+
+                $("select[name=city_id] option").each(function() {
+                    if (Number($(this).val()) === Number(content.city_code)) {
+                        $(this).prop("selected", true);
+                    }
+                });
+
+
+
+
+
+                content.sectors.forEach(function(sector) {
+                    let sector_en = sector.en.trim().toLowerCase();
+                    let tagHtml = `<span class="tag">${sector_en}<button class="remove-tag">×</button><input type="hidden" name="tags[]" value="${sector_en}"></span>`;
+
+
+                    $(".selected-tags").append(tagHtml);
+                });
+
+                popup.close();
+            },
+            error: function (xhr, status, error) {
+                console.error("Hata:", error);
+                Swal.fire({
+                    title: "Oooopsss!",
+                    text: "API isteğinde bir hata oluştu!",
+                    icon: "error"
+                });
+            }
+        });
+    });
+});
+
+</script>
+@endpush

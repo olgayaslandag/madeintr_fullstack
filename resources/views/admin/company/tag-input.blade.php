@@ -60,6 +60,7 @@
         font-size: 0.8rem;
         padding: 0 5px 0 15px;
         margin-right: 5px;
+        margin-bottom: 5px;
     }
     .tag span {
         margin-right: 5px;
