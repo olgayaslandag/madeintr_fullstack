@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contracts\Ai\AiInterface;
 use App\Contracts\City\CityInterface;
 use App\Contracts\Company\CompanyInterface;
 use App\Contracts\Tag\TagInterface;
 use App\Contracts\User\UserInterface;
+use App\Repositories\Ai\AiRepository;
 use App\Repositories\City\CityRepository;
 use App\Repositories\Company\CompanyRepository;
 use App\Repositories\Tag\TagRepository;
@@ -23,6 +25,7 @@ class RepositoryProvider extends ServiceProvider
         $this->app->bind(TagInterface::class, TagRepository::class);
         $this->app->bind(CompanyInterface::class, CompanyRepository::class);
         $this->app->bind(UserInterface::class, UserRepository::class);
+        $this->app->bind(AiInterface::class, AiRepository::class);
     }
 
     /**

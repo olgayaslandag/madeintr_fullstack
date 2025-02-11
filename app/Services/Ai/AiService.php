@@ -14,9 +14,9 @@ class AiService
         $this->apiKey = config('services.openai.api_key');
     }
 
-    public function sendPrompt(string $prompt, string $model = 'gpt-4o-mini', float $temperature = 1)
+    public function sendPrompt(string $webpage, string $prompt, string $model = 'gpt-4o-mini', float $temperature = 1)
     {
-        $text = "kullanıcı sana url adresi paylaşacak sen de sitedeki tüm bilgileri anlaşılır bir ingilizce olarak
+        $promptt = "kullanıcı sana url adresi paylaşacak sen de sitedeki tüm bilgileri anlaşılır bir ingilizce olarak
             1 - business_name: Web sitesindeki işletmenin adı
             2 - city_code: Bu işletmenin merkezi hangi şehirde olduğunun plaka kodunu yaz
             3 - franchise: Bu işletme franchise veriyor mu? (Evet ya da hayır cevabı ver)
@@ -25,6 +25,8 @@ class AiService
 
 
             json formatında iletmelisin. sectors için şu format gerekiyor:  sectors: [{tr: '', en: ''}]";
+
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->apiKey,
             'Content-Type'  => 'application/json',
@@ -32,8 +34,8 @@ class AiService
         ->post($this->apiUrl, [
             'model'       => $model,
             'messages'    => [
-                ['role' => 'system', 'content' => $text],
-                ['role' => 'user', 'content' => $prompt]
+                ['role' => 'system', 'content' => $prompt],
+                ['role' => 'user', 'content' => $webpage]
             ],
             'temperature' => $temperature,
             'max_tokens' => 2048

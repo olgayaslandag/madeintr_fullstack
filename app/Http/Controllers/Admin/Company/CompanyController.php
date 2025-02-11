@@ -45,7 +45,7 @@ class CompanyController extends Controller
         return view('admin.company.companies', $data);
     }
 
-    public function store(CompanyRequest $request): \Illuminate\Http\JsonResponse
+    public function store(CompanyRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->all();
         $company = $this->companyService->store($data, $request->id);
@@ -53,6 +53,7 @@ class CompanyController extends Controller
         $logoPath = optional($company->logo)->path;
         $company->path = Storage::url($logoPath) ?? null;
 
+        return redirect()->route('admin.company.all')->with('success', 'Bilgiler kaydedildi!');
         return response()->json($company);
     }
 

@@ -29,7 +29,7 @@
                 id="webpage"
                 placeholder="Firma internet sitesi"
                 value="{{ old('webpage', $item->webpage ?? '') }}">
-            <button type="button" class="btn btn-danger ai-start" disabled>
+            <button type="button" class="btn btn-danger ai-start">
                 <i class="fa-solid fa-microchip"></i>
             </button>
         </div>
@@ -124,25 +124,38 @@
 @push('javascript')
 <script>
 jQuery(function($) {
-    $('input[name=webpage]').on('keyup', function() {
-        if ($(this).val().length > 0) {
-            $('.ai-start').removeAttr('disabled');
+    const $webpage = $('input[name=webpage]');
+    const $aiButton = $('.ai-start');
+
+    function validateUrl(url) {
+        const urlPattern = /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(:\d+)?(\/.*)?$/i;
+        return urlPattern.test(url);
+    }
+    function toggleDisabled() {
+        let url = $webpage.val().trim();
+        if (validateUrl(url)) {
+            $aiButton.removeAttr('disabled');
         } else {
-            $('.ai-start').attr('disabled', 'disabled');
+            $aiButton.attr('disabled', 'disabled');
         }
-    });
+    }
+
+    toggleDisabled();
+
+    $webpage.on('input', toggleDisabled);
+
     $('.ai-start').click(function() {
         const popup = Swal.fire({
             icon: 'info',
             title: 'Lütfen Bekleyin',
-            text: 'Sunucudan bilgiler alınma işlemi biraz zaman alabilir. Beklediğiniz için teşekkürler.',
+            text: "Ai'nin sunucuda bilgilerin işlenmesi biraz zaman alabilir. Beklediğiniz için teşekkürler.",
             showConfirmButton: false,
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
 
         const formData = new FormData();
-        formData.append('prompt', $('input[name=webpage]').val());
+        formData.append('webpage', $('input[name=webpage]').val());
 
         $.ajax({
             url: "{{ route('admin.ai.ask') }}",
