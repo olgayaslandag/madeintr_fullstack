@@ -4,6 +4,28 @@
       autocomplete="off">
     @csrf
 
+    <!-- Website -->
+    <div class="mb-3">
+        <label for="webpage" class="{{ $errors->has('webpage') ? 'text-danger' : '' }}">Website</label>
+        <div class="d-flex">
+            <input type="text"
+                class="form-control me-2 {{ $errors->has('webpage') ? 'is-invalid' : '' }}"
+                name="webpage"
+                id="webpage"
+                placeholder="Firma internet sitesi"
+                value="{{ old('webpage', $item->webpage ?? '') }}">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#grapJSModal">
+                <i class="fa-solid fa-microchip"></i>
+            </button>
+            <button type="button" class="btn btn-danger ai-start d-none">
+                <i class="fa-solid fa-microchip"></i>
+            </button>
+        </div>
+
+        @error('webpage')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
 
     <!-- Ünvan -->
     <div class="mb-3">
@@ -15,26 +37,6 @@
                placeholder="Firma ünvanı"
                value="{{ old('name', $item->name ?? '') }}">
         @error('name')
-        <small class="text-danger">{{ $message }}</small>
-        @enderror
-    </div>
-
-    <!-- Website -->
-    <div class="mb-3">
-        <label for="webpage" class="{{ $errors->has('webpage') ? 'text-danger' : '' }}">Website</label>
-        <div class="d-flex">
-            <input type="text"
-                class="form-control me-2 {{ $errors->has('webpage') ? 'is-invalid' : '' }}"
-                name="webpage"
-                id="webpage"
-                placeholder="Firma internet sitesi"
-                value="{{ old('webpage', $item->webpage ?? '') }}">
-            <button type="button" class="btn btn-danger ai-start">
-                <i class="fa-solid fa-microchip"></i>
-            </button>
-        </div>
-
-        @error('webpage')
         <small class="text-danger">{{ $message }}</small>
         @enderror
     </div>
@@ -120,6 +122,39 @@
         {{ isset($item) ? 'Güncelle' : 'Kaydet' }}
     </button>
 </form>
+
+
+
+@push('modals')
+<div class="modal" tabindex="-1" id="grapJSModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">JSON Kaynak Kodları</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <textarea id="data-json" class="form-control" placeholder="Kaynak kodu buraya yapıştırın..." rows="10"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger cancel-grap" data-bs-dismiss="modal">İptal</button>
+          <button type="button" class="btn btn-secondary grap-json">Kaydet</button>
+        </div>
+      </div>
+    </div>
+</div>
+@endpush
+
+
+
+
+
+
+
+
+
+
+
 
 @push('javascript')
 <script>
@@ -214,6 +249,39 @@ jQuery(function($) {
                 });
             }
         });
+    });
+
+    $('.grap-json').click(function() {
+        const data_content = $('#data-json').val();
+        let content = JSON.parse(data_content);
+
+        $("select[name='franchising']").val(content.franchise === "Yes" ? "1" : "0");
+
+        console.log(content);
+
+        $('input[name=name]').val(content.business_name);
+        $('textarea[name=desc]').val(content.about_summary);
+
+        $("select[name=city_id] option").each(function() {
+            if (Number($(this).val()) === Number(content.city_code)) {
+                $(this).prop("selected", true);
+            }
+        });
+
+
+
+
+
+        content.sectors.forEach(function(sector) {
+            let sector_en = sector.en.trim().toLowerCase();
+            let tagHtml = `<span class="tag">${sector_en}<button class="remove-tag">×</button><input type="hidden" name="tags[]" value="${sector_en}"></span>`;
+
+
+            $(".selected-tags").append(tagHtml);
+        });
+
+        $('.cancel-grap').trigger('click');
+
     });
 });
 

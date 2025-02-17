@@ -98,9 +98,9 @@ class CompanyController extends Controller
     {
         $delete = $this->repository->delete($request->id);
         if(!$delete)
-            return redirect()->route('company.all')->with('error', 'Bilgiler sistemden silinemedi!');
+            return redirect()->route('admin.company.all')->with('error', 'Bilgiler sistemden silinemedi!');
 
         $this->tagRepository->relationDelete($request->id);
-        return redirect()->route('company.all')->with('success', 'Bilgiler sistemden kalıcı olarak silindi.');
+        return redirect()->route('admin.company.all')->with('success', 'Bilgiler sistemden kalıcı olarak silindi.');
     }
 }
