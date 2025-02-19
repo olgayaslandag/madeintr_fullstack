@@ -62,7 +62,8 @@
             <option value="">Seçim Yapın...</option>
             @foreach($cities as $city)
                 <option value="{{ $city->id }}"
-                    {{ old('city_id', $item->city_id ?? '') == $city->id ? 'selected' : '' }}>
+                    {{ old('city_id', $item->city_id ?? '') == $city->id ? 'selected' : '' }}
+                    data-plate="{{ $city->plate }}">
                     {{ $city->name }}
                 </option>
             @endforeach
@@ -255,7 +256,7 @@ jQuery(function($) {
         const data_content = $('#data-json').val();
         let content = JSON.parse(data_content);
 
-        $("select[name='franchising']").val(content.franchise === "Yes" ? "1" : "0");
+        $("select[name='franchising']").val(content.franchise === "Yes" || content.franchise === "Evet" ? "1" : "0");
 
         console.log(content);
 
@@ -263,7 +264,8 @@ jQuery(function($) {
         $('textarea[name=desc]').val(content.about_summary);
 
         $("select[name=city_id] option").each(function() {
-            if (Number($(this).val()) === Number(content.city_code)) {
+            let plate = $(this).data('plate');
+            if (Number(plate) === Number(content.city_code)) {
                 $(this).prop("selected", true);
             }
         });

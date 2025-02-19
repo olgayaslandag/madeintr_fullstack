@@ -14,6 +14,5 @@ class CityModel extends Model
     protected $fillable = [
         "name",
         "plate",
-        "phone_code"
     ];
 }

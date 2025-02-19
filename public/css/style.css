@@ -2,12 +2,18 @@
 
 
 :root {
-    --thm-color: #c82026;
-    --thm-color-gray: #777;
+    --thm-color: #ED1B38;
+    --thm-color-gray: #BCC5CC;
+    --thm-color-title: #75858F;
+    --thm-color-text: #465259;
 }
 
 * {
     transition: all 0.5s ease;
+}
+
+p {
+    color: var(--thm-color-text);
 }
 
 body {
@@ -19,8 +25,8 @@ body {
 }
 
 .btn-danger {
-    background-color: var(--thm-color);
-    border-color: var(--thm-color);
+    background-color: var(--thm-color)!important;
+    border-color: var(--thm-color)!important;
 }
 
 header {
@@ -87,9 +93,10 @@ form.login-form {
     color: var(--thm-color);
     border: 1px solid var(--thm-color);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 1rem;
-    line-height: 3rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
 }
 
 .home-area ul li a:hover {
@@ -103,10 +110,11 @@ form.login-form {
 
 .prefooter .info-area .info-title {
     font-weight: bold;
+    color: var(--thm-color-title);
 }
 
 .prefooter .info-area a {
-    background-color: var(--thm-color-gray);
+    background-color: var(--thm-color-text);
     text-decoration: none;
     color: white;
     padding: 0.5rem 1rem;
@@ -120,22 +128,24 @@ form.login-form {
 
 .prefooter .info-area a:hover {
     background-color: white;
-    color: var(--thm-color-gray);
-    border: 1px solid var(--thm-color-gray);
+    color: var(--thm-color-text);
+    border: 1px solid var(--thm-color-text);
 }
 
 
 .prefooter .tags-area ul li a {
-    color: var(--thm-color-gray);
-    border: 1px solid var(--thm-color-gray);
+    color: var(--thm-color-text);
+    border: 1px solid var(--thm-color-text);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 0.7rem;
     border-radius: 1rem;
-    line-height: 3rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
 }
 
 .prefooter .tags-area ul li a:hover {
     background-color: var(--thm-color-gray);
+    border-color: var(--thm-color-gray);
     color: white;
 }
 
