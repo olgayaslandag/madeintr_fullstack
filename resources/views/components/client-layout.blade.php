@@ -6,6 +6,8 @@
     <title>Made In TR</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{asset('img/amblem.png')}}">
+
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
@@ -35,7 +37,7 @@
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid px-0">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="{{asset('img/logo.png')}}" height="50" />
+                    <img src="{{asset('img/logo_original.svg')}}" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

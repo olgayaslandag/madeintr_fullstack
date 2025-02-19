@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid px-0">
                 <a class="navbar-brand" href="{{ Auth::check() ? '/admin' : '/' }}">
-                    <img src="{{asset('img/logo.png')}}" height="50" />
+                    <img src="{{asset('img/logo_original.svg')}}" height="50" />
                 </a>
                 @auth
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

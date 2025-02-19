@@ -73,7 +73,7 @@
 
             <div class="col-12 col-sm-3 d-flex align-items-center justify-content-end">
                 <a href="/">
-                    <img src="{{asset('img/logo.png')}}" height="50" />
+                    <img src="{{asset('img/logo_white.svg')}}" height="40" />
                 </a>
             </div>
         </div>

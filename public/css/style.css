@@ -97,6 +97,7 @@ form.login-form {
     border-radius: 1rem;
     line-height: 2rem;
     font-size: 0.9rem;
+    text-transform: capitalize;
 }
 
 .home-area ul li a:hover {
@@ -141,6 +142,7 @@ form.login-form {
     border-radius: 1rem;
     line-height: 2rem;
     font-size: 0.9rem;
+    text-transform: capitalize;
 }
 
 .prefooter .tags-area ul li a:hover {
