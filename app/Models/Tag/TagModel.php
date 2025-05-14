@@ -13,7 +13,9 @@ class TagModel extends Model
     protected $table = "tags";
 
     protected $fillable = [
-        "name"
+        "name",
+        "order",
+        "slug"
     ];
 
     public function companies()
@@ -26,5 +28,10 @@ class TagModel extends Model
             'id',           // Local key on tags table
             'company_id'    // Local key on tags_relation table
         );
+    }
+
+    public function relations()
+    {
+        return $this->hasMany(TagRelationModel::class, 'tag_id', 'id');
     }
 }

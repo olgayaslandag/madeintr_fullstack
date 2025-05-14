@@ -25,6 +25,7 @@ class TagRepository implements \App\Contracts\Tag\TagInterface
             ->selectRaw('COUNT(tag_relations.id) as usage_count') // Kullanım sayısını hesapla
             ->leftJoin('tag_relations', 'tags.id', '=', 'tag_relations.tag_id') // İlişkiyi kur
             ->groupBy('tags.id', 'tags.name')
+            ->orderBy('usage_count', 'desc')
             ->where($where)
             ->get();
     }

@@ -54,7 +54,6 @@ class CompanyController extends Controller
         $company->path = Storage::url($logoPath) ?? null;
 
         return redirect()->route('admin.company.all')->with('success', 'Bilgiler kaydedildi!');
-        return response()->json($company);
     }
 
     public function create(): \Illuminate\Contracts\View\View

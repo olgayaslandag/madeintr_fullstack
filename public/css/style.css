@@ -40,6 +40,14 @@ header form[role=search] {
     width: 250px;
 }
 
+header form[role=search] input {
+    border-radius: 4rem;
+    zoom: 0.9;
+}
+
+header form[role=search] input:focus {
+    box-shadow: none!important;
+}
 header form[role=search] button {
     position: absolute;
     z-index: 9;
@@ -56,7 +64,6 @@ form.login-form {
 }
 
 .navbar-nav li.nav-item i {
-    color: var(--thm-color);
     font-size: 12px;
     margin-left: 5px;
 }
@@ -109,7 +116,7 @@ form.login-form {
     color: var(--thm-color-gray);
 }
 
-.prefooter .info-area .info-title {
+.info-title {
     font-weight: bold;
     color: var(--thm-color-title);
 }

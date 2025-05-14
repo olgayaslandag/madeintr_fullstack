@@ -13,6 +13,7 @@ Route::group(['prefix' => 'auth'], function() {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 })->withoutMiddleware('auth');
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(CompanyController::class)->group(function() {

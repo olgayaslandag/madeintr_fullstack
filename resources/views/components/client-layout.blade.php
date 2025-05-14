@@ -32,7 +32,7 @@
         </ul>
     </div>
 </div>
-<header class="client">
+<header class="client sticky-top bg-white">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid px-0">
@@ -44,8 +44,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-
-
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/">
                                 Home <i class="fa-solid fa-arrow-right"></i>
@@ -90,7 +88,9 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit" style="width: 5px; margin-right: 15px; opacity: 0;">Search</button>
+                        <button class="btn" type="submit" style="width: 5px; margin-right: 15px;">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -119,6 +119,19 @@
 @include('client.parts.prefooter')
 <div class="mb-5"></div>
 @include('client.parts.footer')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    jQuery(function($) {
+        $(window).on('scroll', function () {
+            var scroll = $(window).scrollTop();
+            if (scroll > 0) {
+                $('header').addClass('fixed');
+            } else {
+                $('header').removeClass('fixed');
+            }
+        });
+    });
+</script>
 </body>
 </html>

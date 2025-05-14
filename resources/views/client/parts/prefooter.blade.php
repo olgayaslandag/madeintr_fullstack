@@ -14,9 +14,9 @@
 
         <div class="text-center tags-area mt-5">
             <ul class="list-inline">
-                @foreach ($tags as $tag)
+                @foreach ($tags->take(50) as $tag)
                 <li class="list-inline-item">
-                    <a href="">{{ $tag->name }}</a>
+                    <a href="">{{ $tag->name }} ({{ $tag->usage_count }})</a>
                 </li>
                 @endforeach
             </ul>
