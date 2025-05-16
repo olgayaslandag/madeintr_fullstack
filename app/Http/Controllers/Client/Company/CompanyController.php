@@ -42,6 +42,8 @@ class CompanyController extends Controller
 
     public function get(int $id)
     {
-        return view('client.company.company');
+        $item = $this->repository->find($id);
+
+        return view('client.company.company', compact('item'));
     }
 }

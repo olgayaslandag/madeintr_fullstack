@@ -1,11 +1,4 @@
 <x-client-layout>
-    <style>
-        .three-columns {
-            -webkit-column-count: 3;
-            -moz-column-count: 3;
-            column-count: 3;
-        }
-    </style>
     <div class="container">
         <div>
             <h1 class="h3 info-title text-center my-5 text-uppercase">Sectors</h1>

@@ -51,25 +51,25 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tag.all')}}">
+                            <a class="nav-link" href="{{ route('tag.all') }}">
                                 Sectors <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('company.all')}}">
+                            <a class="nav-link" href="{{ route('company.all') }}">
                                 Brands <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tag.all')}}">
+                            <a class="nav-link" href="{{ route('city.all') }}">
                                 Cities <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tag.all')}}">
+                            <a class="nav-link" href="{{ route('tag.all') }}">
                                 Franchise <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </li>

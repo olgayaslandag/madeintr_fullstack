@@ -14,12 +14,12 @@ class LogoSeeder extends Seeder
     public function run(): void
     {
         $logos = [
-            "img/logos/1.jpg",
-            "img/logos/2.png",
-            "img/logos/3.webp",
-            "img/logos/4.png",
-            "img/logos/5.jpg",
-            "img/logos/6.png",
+            "img/logos/logo_1.jpg",
+            "img/logos/logo_2.png",
+            "img/logos/logo_3.webp",
+            "img/logos/logo_4.png",
+            "img/logos/logo_5.png",
+            "img/logos/logo_6.png",
         ];
 
         foreach($logos as $logo) {
