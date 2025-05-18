@@ -84,7 +84,7 @@ class TagRepository implements \App\Contracts\Tag\TagInterface
     {
         return $this->model
             ->where($where)
-            ->with(["companies.logo", "companies.city"])
+            ->with(["companies.logo:id,path", "companies.city:id,name", "companies.tags"])
             ->first();
     }
 }

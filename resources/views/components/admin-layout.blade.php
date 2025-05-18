@@ -41,10 +41,6 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.ai.form')}}">AI</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link" href="{{route('logout')}}">Çıkış</a>
                         </li>
 

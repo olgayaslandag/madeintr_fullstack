@@ -16,6 +16,19 @@
                 <a href="" class="btn-gray mb-3">
                     {{ $item->city->name }} <i class="fa-solid fa-arrow-right"></i>
                 </a>
+
+                <div class="d-block"></div>
+
+                @if ($item->franchising)
+                    <a href="#" class="btn-gray mb-3">
+                        Franchise Var <i class="fa-solid fa-check"></i>
+                    </a>
+                @else
+                    <a href="#" class="btn-gray mb-3">
+                        Franchise Yok <i class="fa-solid fa-times"></i>
+                    </a>
+                @endif
+
                 <p class="">{{ $item->desc }}</p>
                 <div class="prefooter">
                     <div class="text-center tags-area">

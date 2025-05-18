@@ -27,11 +27,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-4 offset-sm-2">
-                    <h3>Register For Newsletter</h3>
+                    <h3 class="mb-0 fw-bold">Register For Newsletter</h3>
                     <p class="mb-0">Receive email updates about featured businesses</p>
                 </div>
                 <div class="col-12 col-sm-4">
-                    <form>
+                    <form class="subscribe-form">
                         @csrf
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Email Address">

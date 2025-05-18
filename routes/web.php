@@ -8,11 +8,15 @@ use App\Http\Controllers\Client\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth'], function() {
-    Route::get('/login', [AuthController::class, 'loginView'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::middleware('auth')->group(function () {
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
 
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-})->withoutMiddleware('auth');
+    Route::middleware(['guest', 'RedirectIfAuthenticated'])->group(function () {
+        Route::get('/login', [AuthController::class, 'loginView'])->name('login');
+        Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    });
+});
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

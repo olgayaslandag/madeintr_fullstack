@@ -117,6 +117,7 @@
 
 
 @include('client.parts.prefooter')
+@include('client.parts.modal-company')
 <div class="mb-5"></div>
 @include('client.parts.footer')
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -129,6 +130,45 @@
                 $('header').addClass('fixed');
             } else {
                 $('header').removeClass('fixed');
+            }
+        });
+
+        // Modal Company Information Service
+        $('a[data-bs-toggle="modal"]').on('click', function () {
+            const company = $(this).closest('li').data('company');
+           if(!company) return;
+
+            // Logo ve isim
+            $('#modal-logo').attr('src', '/' + (company.logo?.path || ''));
+            $('#modal-name').text(company.name || '');
+
+            // Web sayfası
+            $('#modal-webpage').attr('href', company.webpage ?? '#');
+
+            // Şehir
+            $('#modal-city').text(company.city?.name ?? 'Şehir yok');
+
+            // Franchise
+            if (company.franchising) {
+                $('#modal-franchise').html('Franchise Available <i class="fa-solid fa-check"></i>');
+            } else {
+                $('#modal-franchise').html('No Franchise <i class="fa-solid fa-times"></i>');
+            }
+
+            // Açıklama
+            $('#modal-desc').text(company.desc || '');
+
+            // Etiketler
+            const $tagsArea = $('#modal-tags');
+            $tagsArea.empty();
+            if (Array.isArray(company.tags)) {
+                company.tags.forEach(function (tag) {
+                    $tagsArea.append(
+                        $('<li>', { class: 'list-inline-item' }).append(
+                            $('<a>', { href: '/tag/' + tag.id, text: tag.name })
+                        )
+                    );
+                });
             }
         });
     });

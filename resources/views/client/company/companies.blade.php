@@ -25,8 +25,11 @@
                 <ul class="list-inline link-letters border-0 p-0">
                 @foreach ($companies as $company)
                     @if (ctype_digit(mb_substr($company->name, 0, 1)))
-                        <li class="list-inline-item">
-                            <a href="" class="text-danger text-decoration-none">{{ $company->name }}</a>
+                        <li class="list-inline-item" data-company='@json($company)'>
+                            <a href="{{ route('company.get', $company->id) }}"
+                                class="text-danger text-decoration-none"
+                                data-bs-toggle="modal"
+                                data-bs-target="#companyModal">{{ $company->name }}</a>
                         </li>
                     @endif
                 @endforeach
@@ -38,8 +41,11 @@
                 <ul class="list-inline link-letters border-0 p-0">
                 @foreach ($companies as $company)
                     @if (strtolower(mb_substr($company->name, 0, 1)) === $letter)
-                        <li class="list-inline-item">
-                            <a href="{{ route('company.get', $company->id) }}" class="text-danger text-decoration-none">{{ $company->name }}</a>
+                        <li class="list-inline-item" data-company='@json($company)'>
+                            <a href="{{ route('company.get', $company->id) }}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#companyModal"
+                                class="text-danger text-decoration-none">{{ $company->name }}</a>
                         </li>
                     @endif
                 @endforeach
