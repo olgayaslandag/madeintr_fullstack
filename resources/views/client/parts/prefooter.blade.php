@@ -16,7 +16,7 @@
             <ul class="list-inline">
                 @foreach ($tags->take(50) as $tag)
                 <li class="list-inline-item">
-                    <a href="">{{ $tag->name }} ({{ $tag->usage_count }})</a>
+                    <a href="{{ route('tag.get', $tag->id) }}">{{ $tag->name }} ({{ $tag->usage_count }})</a>
                 </li>
                 @endforeach
             </ul>
