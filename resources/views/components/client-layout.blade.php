@@ -171,6 +171,18 @@
                 });
             }
         });
+
+        const cityGetRouteTemplate = "{{ route('city.get', ':id') }}";
+
+        $('#svg-turkiye-haritasi g').on('click', function (e) {
+            e.preventDefault();
+
+            var plakakodu = $(this).data('plakakodu');
+            if (!plakakodu) return;
+
+            var targetUrl = cityGetRouteTemplate.replace(':id', plakakodu);
+            window.location.href = targetUrl;
+        });
     });
 </script>
 </body>

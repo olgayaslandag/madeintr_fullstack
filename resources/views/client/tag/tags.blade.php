@@ -1,7 +1,7 @@
 <x-client-layout>
     <div class="container">
         <div>
-            <h1 class="h3 info-title text-center my-5 text-uppercase">Sectors</h1>
+            <h3 class="h3 info-title text-center my-5 text-uppercase">Sectors</h3>
         </div>
     </div>
     <div class="container">
