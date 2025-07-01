@@ -18,7 +18,7 @@ class TagRepository implements \App\Contracts\Tag\TagInterface
         $this->relationModel = $relationModel;
     }
 
-    public function all(array $where = []): \Illuminate\Database\Eloquent\Collection
+    public function all(array $where = [], $limit=null): \Illuminate\Database\Eloquent\Collection
     {
         return $this->model
             ->select("tags.id", "tags.name")
