@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Ai\AiController;
 use App\Http\Controllers\Admin\Company\CompanyController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Tag\TagController;
+use App\Http\Controllers\Admin\TagCategory\TagCategoryController;
 use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,12 @@ Route::name('admin.')->group(function () {
     });
 
     Route::prefix('tag')->controller(TagController::class)->group(function() {
+        Route::prefix('category')->name('tag.')->controller(TagCategoryController::class)->group(function() {
+            Route::get('/', 'index')->name('category.all');
+            Route::get('form/{id?}', 'form')->name('category.form');
+            Route::delete('delete/{id}', 'delete')->name('category.delete');
+            Route::post('store', 'store')->name('category.store');
+        });
         Route::get('/', 'index')->name('tag.all');
         Route::get('new', 'create')->name('tag.create');
         Route::get('edit/{id}', 'edit')->name('tag.edit');

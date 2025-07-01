@@ -41,6 +41,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.tag.category.all')}}">Etiket Kategori</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('logout')}}">Çıkış</a>
                         </li>
 
